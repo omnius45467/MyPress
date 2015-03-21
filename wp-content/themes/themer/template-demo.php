@@ -1,45 +1,43 @@
-<?php /* Template Name: Demo Page Template */ get_header(); ?>
+<?php /* Template Name: Page Template */ get_header(); ?>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			
+			<div class="col-md-4">
 
-	<main role="main">
-		<!-- section -->
-		<section>
+				<h1><?php the_title(); ?></h1>
 
-			<h1><?php the_title(); ?></h1>
+				<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
-		<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+					<!-- article -->
+					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-			<!-- article -->
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+						<?php the_content(); ?>
 
-				<?php the_content(); ?>
+						<br class="clear">
 
-				<?php comments_template( '', true ); // Remove if you don't want comments ?>
+					</article>
+					<!-- /article -->
 
-				<br class="clear">
+				<?php endwhile; ?>
 
-				<?php edit_post_link(); ?>
+				<?php else: ?>
 
-			</article>
-			<!-- /article -->
+					<!-- article -->
+					<article>
 
-		<?php endwhile; ?>
+						<h2><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h2>
 
-		<?php else: ?>
+					</article>
+					<!-- /article -->
 
-			<!-- article -->
-			<article>
-
-				<h2><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h2>
-
-			</article>
-			<!-- /article -->
-
-		<?php endif; ?>
-
-		</section>
-		<!-- /section -->
-	</main>
-
-<?php get_sidebar(); ?>
-
+				<?php endif; ?>
+				
+			</div>
+			<div class="col-md-8">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, amet at, dolor dolorem ducimus ea eligendi esse facere id incidunt, necessitatibus nihil quidem ratione repudiandae rerum unde voluptatem? Libero, omnis.
+			</div>
+		</div>
+	</div>
+</div>
 <?php get_footer(); ?>
